@@ -6,15 +6,30 @@
     {
       "id": "labor",
       "label": "Labor & Delivery",
+      "summary": "Labor has a shape and a set of decision points — knowing them ahead of time turns a scary unknown into a checklist.",
       "lessons": [
-        { "id": "lab01", "title": "The three stages of labor",
-          "why": "Knowing the shape of it makes it far less frightening in the moment.",
+        { "id": "lab01", "title": "Stage 1: Dilation",
+          "why": "The longest stage by far — knowing that up front prevents a lot of unnecessary panic early on.",
           "facts": [
-            "Stage 1: contractions dilate the cervix from 0 to 10cm — the longest stage, often 8–14 hours for a first baby.",
-            "Stage 2: pushing and delivery of the baby — usually 20 minutes to a few hours.",
-            "Stage 3: delivery of the placenta — typically 5–30 minutes after birth."
+            "Contractions dilate the cervix from 0 to 10cm.",
+            "The longest of the three stages — often 8–14 hours for a first baby.",
+            "Usually split into early labor (slower) and active labor (faster, more intense) phases."
           ] },
-        { "id": "lab02", "title": "Signs of true labor vs. Braxton Hicks",
+        { "id": "lab02", "title": "Stage 2: Pushing and delivery",
+          "why": "Shorter and more intense than Stage 1 — the part most people picture when they think of \"labor.\"",
+          "facts": [
+            "Begins once the cervix is fully dilated at 10cm.",
+            "Pushing and delivery of the baby.",
+            "Usually 20 minutes to a few hours."
+          ] },
+        { "id": "lab03", "title": "Stage 3: Delivering the placenta",
+          "why": "Often forgotten in birth-prep conversations, but it's still part of the process.",
+          "facts": [
+            "Delivery of the placenta, after the baby is born.",
+            "Typically 5–30 minutes after birth.",
+            "Your care team will check that it's delivered completely, since retained fragments can cause bleeding."
+          ] },
+        { "id": "lab04", "title": "Signs of true labor vs. Braxton Hicks",
           "why": "False alarms are common in the last weeks — this is how to tell the difference.",
           "facts": [
             "True contractions get closer together, longer, and stronger over time; Braxton Hicks stay irregular and often ease with rest or hydration.",
@@ -22,35 +37,50 @@
             "Other real signs: your water breaking, or a \"bloody show\" (mucus plug with light spotting)."
           ],
           "mustRemember": "Call your care team if contractions are 5 minutes apart, lasting 1 minute, for 1 hour (\"5-1-1\") — or immediately if your water breaks." },
-        { "id": "lab03", "title": "When to head to the hospital",
+        { "id": "lab05", "title": "When to head to the hospital",
           "why": "Leaving too early or too late are both common regrets.",
           "facts": [
             "Follow the 5-1-1 rule for first labors, but go sooner if your hospital is far or it's not your first baby.",
             "Go immediately for: water breaking, heavy bleeding, reduced fetal movement, or severe unrelenting pain.",
             "Call the hospital/clinic first — they may want you to come straight in rather than wait out contractions at home."
           ] },
-        { "id": "lab04", "title": "Pain relief options",
-          "why": "Deciding roughly what you want beforehand reduces stress mid-labor.",
+        { "id": "lab06", "title": "Pain relief: Epidural",
+          "why": "The most common choice by far — worth understanding what it actually does and doesn't do.",
           "facts": [
-            "Epidural: regional anesthesia, most common, doesn't fully remove sensation but numbs most pain.",
-            "Nitrous oxide (gas & air): short-acting, self-administered, wears off fast.",
-            "Non-medical: breathing techniques, water immersion, movement, massage from a birth partner."
+            "Regional anesthesia, delivered via a catheter in the lower back.",
+            "Doesn't fully remove sensation, but numbs most pain from the waist down.",
+            "Typically takes 10–20 minutes to place and take effect — worth requesting before pain is severe, not at the last minute."
           ] },
-        { "id": "lab05", "title": "The birth partner's real job",
+        { "id": "lab07", "title": "Pain relief: Nitrous oxide (gas & air)",
+          "why": "A lighter-touch option than an epidural, for when you want to stay more mobile and in control.",
+          "facts": [
+            "Short-acting and self-administered through a mask or mouthpiece, breath by breath.",
+            "Wears off fast once you stop using it, with no lasting effect on baby.",
+            "Can be combined with other pain relief, or used on its own."
+          ] },
+        { "id": "lab08", "title": "Pain relief: Non-medical options",
+          "why": "Worth having in the mix even if you also want an epidural — many people use both.",
+          "facts": [
+            "Breathing techniques to stay ahead of the pain rather than reacting to it.",
+            "Water immersion (a bath or shower) and movement/position changes.",
+            "Massage and counter-pressure from a birth partner, especially for lower-back pain."
+          ] },
+        { "id": "lab09", "title": "The birth partner's real job",
           "why": "This is what actually helps versus what looks helpful in movies.",
           "facts": [
             "Advocate: relay her wishes to staff when she can't easily speak for herself.",
             "Track time: note contraction frequency and duration so you have real numbers when calling the hospital.",
             "Stay calm and present — your steadiness is often more valuable than anything you say."
           ] },
-        { "id": "lab06", "title": "C-section basics",
+        { "id": "lab10", "title": "C-section basics",
           "why": "Roughly 1 in 3 births in Singapore involve a C-section — worth understanding even if unplanned.",
           "facts": [
             "Can be planned (breech position, placenta previa, prior C-section) or unplanned (labor stalls, fetal distress).",
             "Recovery is longer than vaginal birth — typically 4–6 weeks, with limits on lifting and driving.",
             "A support partner is usually allowed in the room for both planned and emergency C-sections in Singapore."
           ] }
-      ]
+      ],
+      "takeaway": "You can't control how labor unfolds, but you can control being prepared — pack the hospital bag early, know your 5-1-1, and settle your pain-relief preferences and support plan in advance."
     },
     {
       "id": "newborn",
@@ -187,64 +217,102 @@
     {
       "id": "postpartum",
       "label": "Postpartum",
+      "summary": "Postpartum recovery is a longer, more varied process than most people expect — physically and emotionally.",
       "lessons": [
-        { "id": "post01", "title": "What \"recovery\" actually looks like",
-          "why": "Films skip this — the reality is a longer process than most people expect.",
+        { "id": "post01", "title": "Vaginal bleeding (lochia)",
+          "why": "One of the most visible parts of recovery, and one of the least talked about beforehand.",
           "facts": [
-            "Vaginal bleeding (lochia) can last 4–6 weeks, tapering from bright red to brown to yellow-white.",
-            "Full physical recovery, especially after a C-section, is closer to 6–8 weeks minimum.",
-            "Afterpains (uterus contracting back down) are normal and often stronger with each subsequent baby."
+            "Vaginal bleeding (lochia) can last 4–6 weeks.",
+            "It tapers over that time, from bright red, to brown, to yellow-white.",
+            "A sudden return to heavy bright-red bleeding after it's tapered is worth calling your care team about."
           ] },
-        { "id": "post02", "title": "Baby blues vs. postpartum depression",
-          "why": "One is expected and passes; the other needs professional support — telling them apart matters.",
+        { "id": "post02", "title": "Overall physical recovery timeline",
+          "why": "\"Recovery\" isn't a single day — it's a gradual process, longer than film montages suggest.",
           "facts": [
-            "\"Baby blues\" affects up to 80% of new mothers: mood swings, weepiness, anxiety in the first 2 weeks.",
-            "Postpartum depression (PPD) lasts longer than 2 weeks and is more intense — persistent sadness, hopelessness, difficulty bonding.",
-            "PPD is treatable and common — it affects fathers/partners too, and screening is available through your polyclinic or hospital."
+            "Full physical recovery is closer to 6–8 weeks minimum.",
+            "Recovery after a C-section takes longer than after a vaginal birth, with added limits on lifting and driving.",
+            "The 6-week postpartum check is the usual point your care team formally clears you for normal activity."
+          ] },
+        { "id": "post03", "title": "Afterpains",
+          "why": "An often-unexpected part of recovery — worth knowing in advance that it's normal.",
+          "facts": [
+            "Afterpains are the uterus contracting back down to its pre-pregnancy size.",
+            "They're normal, not a sign something's wrong.",
+            "They're often stronger with each subsequent baby, and noticeable especially during breastfeeding."
+          ] },
+        { "id": "post04", "title": "Baby blues",
+          "why": "Extremely common, and passes on its own — distinguishing it from PPD matters.",
+          "facts": [
+            "Affects up to 80% of new mothers.",
+            "Mood swings, weepiness, and anxiety in the first 2 weeks after birth.",
+            "Resolves on its own, typically within 2 weeks, without treatment."
+          ] },
+        { "id": "post05", "title": "Postpartum depression (PPD)",
+          "why": "One is expected and passes; PPD needs professional support — telling them apart matters.",
+          "facts": [
+            "Lasts longer than 2 weeks and is more intense than baby blues — persistent sadness, hopelessness, difficulty bonding.",
+            "Treatable and common — it affects fathers/partners too, not just mothers.",
+            "Screening is available through your polyclinic or hospital."
           ],
           "mustRemember": "If low mood lasts beyond 2 weeks, or includes thoughts of harming yourself or the baby, contact a doctor immediately — this is medical, not a personal failing." },
-        { "id": "post03", "title": "Pelvic floor recovery",
+        { "id": "post06", "title": "Pelvic floor recovery",
           "why": "Often skipped in prep, but affects long-term comfort and health.",
           "facts": [
             "Pelvic floor muscles are stretched by pregnancy and vaginal delivery, and weakened even after C-sections.",
             "Gentle pelvic floor exercises can typically start within days postpartum, but check with your obstetrician first.",
             "Singapore hospitals and polyclinics offer postnatal physiotherapy referrals — worth asking about at your 6-week check."
           ] },
-        { "id": "post04", "title": "Sex and intimacy after birth",
+        { "id": "post07", "title": "Sex and intimacy after birth",
           "why": "Timelines vary widely — this removes the guesswork.",
           "facts": [
             "Most doctors advise waiting until after the 6-week postpartum check before resuming penetrative sex.",
             "Hormonal changes (especially while breastfeeding) can reduce libido and cause vaginal dryness — this is temporary and normal.",
             "Non-sexual intimacy and communication matter more in this window than most couples expect."
           ] },
-        { "id": "post05", "title": "Building your support system now",
+        { "id": "post08", "title": "Building your support system now",
           "why": "The best time to arrange help is before you need it desperately.",
           "facts": [
             "Decide in advance who's doing what in the first 2 weeks: meals, errands, night wake-ups, visitors.",
             "If hiring a confinement nanny or postpartum doula, book 2–3 months ahead — good ones are fully booked early in Singapore.",
             "Agree with your partner on a \"tag out\" signal for when either of you is overwhelmed, before you're in the moment."
           ] }
-      ]
+      ],
+      "takeaway": "If low mood lasts beyond 2 weeks, or includes thoughts of harming yourself or the baby, contact a doctor immediately — this is medical, not a personal failing."
     },
     {
       "id": "logistics",
       "label": "Logistics (SG)",
+      "summary": "A handful of Singapore-specific logistics have real deadlines — better handled ahead of time than in the fog of week one.",
       "lessons": [
-        { "id": "log01", "title": "Hospital bag checklist",
+        { "id": "log01", "title": "Hospital bag: for mum",
           "why": "Pack by week 36 — babies don't wait for your to-do list.",
           "facts": [
-            "For mum: ID/passport, insurance card, maternity pads, nursing bra, comfortable going-home outfit, phone charger.",
-            "For baby: going-home outfit, swaddle/blanket, car seat installed in the car beforehand.",
-            "For partner: snacks, change of clothes, entertainment for long stretches of waiting, cash/cards for parking and food."
+            "ID/passport and insurance card.",
+            "Maternity pads and a nursing bra.",
+            "A comfortable going-home outfit and your phone charger."
           ] },
-        { "id": "log02", "title": "Paternity & shared parental leave (2026 rules)",
+        { "id": "log02", "title": "Hospital bag: for baby",
+          "why": "A short list, but easy to forget in the rush of everything else.",
+          "facts": [
+            "A going-home outfit.",
+            "A swaddle or blanket.",
+            "A car seat, installed in the car beforehand — not something to figure out at discharge."
+          ] },
+        { "id": "log03", "title": "Hospital bag: for partner",
+          "why": "Hospital stays involve a lot of waiting — pack for that, not just for the birth itself.",
+          "facts": [
+            "Snacks and a change of clothes.",
+            "Entertainment for long stretches of waiting.",
+            "Cash/cards for parking and food."
+          ] },
+        { "id": "log04", "title": "Paternity & shared parental leave (2026 rules)",
           "why": "This changed recently — worth knowing the current numbers, not the ones from a few years ago.",
           "facts": [
             "Fathers of Singapore-citizen children get 4 weeks of Government-Paid Paternity Leave (GPPL), mandatory since April 2025.",
             "From 1 April 2026, an additional Shared Parental Leave (SPL) pool of 10 weeks is split between both parents (5 weeks each by default, reallocatable).",
             "Combined with 16 weeks of maternity leave, eligible families can access up to 30 weeks of paid leave in baby's first year — leave must generally be used within 12 months of birth."
           ] },
-        { "id": "log03", "title": "Registering the birth",
+        { "id": "log05", "title": "Registering the birth",
           "why": "There's a hard deadline most new parents don't know about.",
           "facts": [
             "Births in Singapore must be registered within 42 days at the Registry of Births and Deaths (usually done at the hospital before discharge).",
@@ -252,32 +320,34 @@
             "The birth certificate is required to open a CDA account and apply for Baby Bonus."
           ],
           "mustRemember": "Register the birth within 42 days — most hospitals help you do this before discharge, so ask about it on admission." },
-        { "id": "log04", "title": "Baby Bonus & CDA account",
+        { "id": "log06", "title": "Baby Bonus & CDA account",
           "why": "Free government money that requires you to actively apply for it.",
           "facts": [
             "The Baby Bonus cash gift and Child Development Account (CDA) require an online application after the birth is registered.",
             "The CDA is a co-savings account — government matches your contributions up to a cap, usable for approved childcare/medical expenses.",
             "Apply promptly — some components have time-sensitive application windows."
           ] },
-        { "id": "log05", "title": "Choosing a pediatrician",
+        { "id": "log07", "title": "Choosing a pediatrician",
           "why": "Better to decide before you're sleep-deprived and need one urgently.",
           "facts": [
             "Ask your gynae or hospital for a referral, or check which pediatric clinics are near home for late-night visits.",
             "Confirm which hospital they're affiliated with, in case of admission.",
             "Newborns typically need checkups at 1 week, 1 month, and then at regular intervals — book the first one before discharge."
           ] },
-        { "id": "log06", "title": "Insurance to sort before birth",
+        { "id": "log08", "title": "Insurance to sort before birth",
           "why": "Some policies need to be in place before the baby arrives to avoid pre-existing condition exclusions.",
           "facts": [
             "MediShield Life covers newborns automatically from birth for Singapore citizens/PRs, but check if you want additional Integrated Shield Plan coverage.",
             "Congenital conditions are sometimes excluded unless you apply for coverage within a set window after birth — check the exact deadline with your insurer.",
             "Confirm what your hospital plan covers for delivery (ward class, complications, NICU stay) before you're admitted."
           ] }
-      ]
+      ],
+      "takeaway": "Register the birth within 42 days, and don't leave Baby Bonus/CDA or insurance applications for \"later\" — several of these have real deadlines that don't wait for you to feel ready."
     },
     {
       "id": "safety",
       "label": "Safety",
+      "summary": "A handful of safety basics have the strongest evidence behind them — worth locking in before the due date, even if the rest of babyproofing can wait.",
       "lessons": [
         { "id": "saf01", "title": "Safe sleep basics",
           "why": "This single set of guidelines has the biggest evidence base for reducing SIDS risk.",
@@ -293,22 +363,47 @@
             "Rear-facing car seat is mandatory in Singapore for infants, in the back seat.",
             "The seat should be installed with no more than 2.5cm of movement side to side when tugged at the base.",
             "Many workshops and some hospitals in Singapore offer free car seat installation checks — worth booking one before week 36."
-          ] },
-        { "id": "saf03", "title": "Infant CPR & choking response",
+          ],
+          "media": { "type": "youtube", "id": "i3VRVTdzFio", "caption": "Installing a Rear-facing Car Safety Seat — American Academy of Pediatrics (AAP)" } },
+        { "id": "saf03", "title": "Infant CPR",
           "why": "A skill you hope to never use, but one course removes most of the panic if you ever do.",
           "facts": [
-            "Infant CPR and choking response differ meaningfully from adult/child techniques — hands-on training beats reading about it.",
+            "Infant CPR differs meaningfully from adult/child CPR — hands-on training beats reading about it.",
             "Singapore Red Cross and SGH/KKH often run short infant first aid courses for expecting parents.",
             "Aim to complete a certified course before the due date, ideally with both parents attending together."
-          ] },
-        { "id": "saf04", "title": "Babyproofing timeline",
-          "why": "You don't need to do it all on day one — but some things matter early.",
+          ],
+          "media": { "type": "youtube", "id": "wl_hwIbM4-U", "caption": "Infant CPR — American Heart Association" } },
+        { "id": "saf04", "title": "Infant choking response",
+          "why": "A distinct skill from CPR — worth knowing the difference before you'd ever need either.",
           "facts": [
-            "Before birth: safe sleep setup, smoke detectors working, water heater temperature capped to avoid scalds.",
-            "By 4–6 months (rolling starts): outlet covers, secure furniture that could tip, remove small choking hazards from floor level.",
-            "By 8–9 months (crawling/pulling up): stair gates, cabinet locks, cord/blind safety, corner guards on sharp furniture."
+            "Choking response differs meaningfully from CPR and from adult/child choking response — hands-on training beats reading about it.",
+            "Singapore Red Cross and SGH/KKH often run short infant first aid courses covering this alongside CPR.",
+            "Aim to complete a certified course before the due date, ideally with both parents attending together."
+          ],
+          "media": { "type": "youtube", "id": "z-3IAG_974o", "caption": "Baby first aid: Choking — British Red Cross" } },
+        { "id": "saf05", "title": "Babyproofing: before birth",
+          "why": "The one stretch of babyproofing worth finishing before baby actually arrives.",
+          "facts": [
+            "Safe sleep setup in place (see Safe Sleep Basics).",
+            "Smoke detectors working, with fresh batteries.",
+            "Water heater temperature capped to avoid scalds."
+          ] },
+        { "id": "saf06", "title": "Babyproofing: by 4–6 months",
+          "why": "Timed to when rolling typically starts — worth having done just ahead of it, not right after.",
+          "facts": [
+            "Outlet covers on accessible sockets.",
+            "Secure furniture that could tip if pulled or leaned on.",
+            "Remove small choking hazards from floor level."
+          ] },
+        { "id": "saf07", "title": "Babyproofing: by 8–9 months",
+          "why": "Timed to when crawling and pulling-up typically start.",
+          "facts": [
+            "Stair gates at the top and bottom of any stairs.",
+            "Cabinet locks, especially anywhere cleaning products or medicine are stored.",
+            "Cord/blind safety and corner guards on sharp furniture."
           ] }
-      ]
+      ],
+      "takeaway": "Back, flat, bare crib every sleep, and get CPR/choking-response certified before the due date — these two are worth prioritizing over the rest of the babyproofing timeline."
     }
   ]
 }
