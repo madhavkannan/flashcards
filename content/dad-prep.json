@@ -85,6 +85,7 @@
     {
       "id": "newborn",
       "label": "Newborn Basics",
+      "summary": "Newborns need frequent, hands-on care in a few areas — none of it complicated once you know what's normal.",
       "lessons": [
         { "id": "new01", "title": "Newborn feeding cues",
           "why": "Newborns signal hunger well before crying — catching it early makes feeds calmer.",
@@ -114,8 +115,17 @@
             "Change before or right after feeds, and immediately after a bowel movement.",
             "For boys, point the penis downward before closing the diaper to avoid leaks upward.",
             "Watch for diaper rash — treat early with a barrier cream and more frequent changes."
-          ] }
-      ]
+          ] },
+        { "id": "new05", "title": "What's normal in the diaper",
+          "why": "Poop changes fast in the first week, and again depending on how baby's fed — worth knowing what's expected.",
+          "facts": [
+            "The first stools (meconium) are black and tarry, usually in the first 1–3 days.",
+            "Over the next few days it transitions through greenish-brown to a more typical color and texture.",
+            "Breastfed stool is usually looser, seedy, and mustard-yellow; formula-fed stool is typically firmer and tan-brown."
+          ],
+          "mustRemember": "Call your pediatrician for hard, pellet-like stools with straining and no result, true diarrhea, or any blood in the stool." }
+      ],
+      "takeaway": "Feeding cues, cord care, bathing, diapering, and poop all settle into a rhythm within the first couple of weeks — the learning curve is real but short."
     },
     {
       "id": "crying",
@@ -210,6 +220,20 @@
             "A short, consistent wind-down (dim lights, swaddle, quiet) can start from week one.",
             "Consistency matters more than the exact steps — babies respond to the pattern repeating.",
             "It won't produce a predictable schedule yet, but it lays the groundwork for one later."
+          ] },
+        { "id": "sl04", "title": "Sleep regressions",
+          "why": "A sudden return to frequent night waking after things were going well usually isn't a problem to fix — it's a phase to get through.",
+          "facts": [
+            "The best-known is the \"4-month regression\" — a real reorganization of sleep-cycle structure, not a decline.",
+            "It typically lasts 2–6 weeks: more night wakings, shorter naps, harder bedtimes.",
+            "Further bumps are common around 8–10 months and 12 months, usually tied to developmental leaps or teething."
+          ] },
+        { "id": "sl05", "title": "How naps evolve",
+          "why": "There's no one \"right\" nap schedule — it shifts predictably as babies get older.",
+          "facts": [
+            "Newborns nap in short, frequent bursts with no real pattern.",
+            "By about 4–5 months, most babies shift toward a more predictable 3-nap-a-day rhythm.",
+            "By around 6 months, many babies settle into 2–3 semi-predictable naps — consistency of wake windows matters more than clock time early on."
           ] }
       ],
       "takeaway": "Expect fragmented, unpredictable sleep for months — focus on safety (see Safe Sleep Basics), not a schedule, for now."
@@ -345,6 +369,56 @@
       "takeaway": "Register the birth within 42 days, and don't leave Baby Bonus/CDA or insurance applications for \"later\" — several of these have real deadlines that don't wait for you to feel ready."
     },
     {
+      "id": "gear",
+      "label": "Gear & Shopping",
+      "summary": "You need less than the internet wants you to buy — this is the actual short list, by category.",
+      "lessons": [
+        { "id": "gear01", "title": "Sleep",
+          "why": "The one category where less genuinely is more — safe sleep needs almost nothing extra.",
+          "facts": [
+            "A crib or bassinet with a firm, flat mattress — no other bedding needed (see Safe Sleep Basics).",
+            "Fitted sheets sized to the mattress, plus a few spares for the inevitable diaper blowouts.",
+            "A few swaddles or sleep sacks, sized for the first months."
+          ] },
+        { "id": "gear02", "title": "Feeding",
+          "why": "Worth having a little backup on hand regardless of how you plan to feed.",
+          "facts": [
+            "Bottles and formula on hand, even if planning to exclusively breastfeed — good to have as backup.",
+            "A breast pump if breastfeeding and planning to return to work, or want others able to feed baby.",
+            "Burp cloths — more than you think you'll need."
+          ] },
+        { "id": "gear03", "title": "Diapering",
+          "why": "Easy to overbuy the wrong size here.",
+          "facts": [
+            "Diapers in newborn size and size 1 — don't overbuy newborn size, most babies size out of it within weeks.",
+            "Wipes and a barrier/diaper rash cream.",
+            "A changing pad, wherever you'll actually be changing diapers most — doesn't need to be a dedicated table."
+          ] },
+        { "id": "gear04", "title": "Bathing & skin",
+          "why": "A short list — bathing a newborn doesn't need much (see Bathing a Newborn).",
+          "facts": [
+            "A baby bathtub or a bath support for the sink or tub.",
+            "Mild, fragrance-free soap and shampoo made for babies.",
+            "Soft towels (hooded ones are convenient) and washcloths."
+          ] },
+        { "id": "gear05", "title": "Clothing",
+          "why": "Birth weight varies enough that exact sizing is a guessing game until baby arrives.",
+          "facts": [
+            "A mix of newborn and 0–3 month sizes, since you won't know which fits best until birth.",
+            "Bodysuits/onesies are the workhorse item — buy more of these than anything else.",
+            "Prioritize easy front or zip openings over anything that has to go over the head."
+          ] },
+        { "id": "gear06", "title": "Going out",
+          "why": "The one category with a genuinely non-negotiable item in it.",
+          "facts": [
+            "A car seat, installed and checked before the due date (see Car Seat Basics) — not optional gear.",
+            "A stroller that fits your actual daily life (stairs, public transport, car boot size) more than one that looks ideal in a showroom.",
+            "A baby carrier, for the stretches where you need both hands free."
+          ] }
+      ],
+      "takeaway": "Buy less than you think for anything labeled \"newborn\" — most of it gets outgrown within weeks. Prioritize the car seat, the sleep setup, and diapers; almost everything else can wait, be borrowed, or be bought after baby arrives."
+    },
+    {
       "id": "safety",
       "label": "Safety",
       "summary": "A handful of safety basics have the strongest evidence behind them — worth locking in before the due date, even if the rest of babyproofing can wait.",
@@ -404,6 +478,44 @@
           ] }
       ],
       "takeaway": "Back, flat, bare crib every sleep, and get CPR/choking-response certified before the due date — these two are worth prioritizing over the rest of the babyproofing timeline."
+    },
+    {
+      "id": "health",
+      "label": "Health & Doctor Visits",
+      "summary": "A handful of newborn quirks look alarming but usually aren't — a few real warning signs are worth knowing cold.",
+      "lessons": [
+        { "id": "health01", "title": "The first-year vaccination schedule (SG)",
+          "why": "Your pediatrician tracks this for you, but knowing the shape of it helps you ask the right questions.",
+          "facts": [
+            "Hepatitis B: first dose soon after birth, with 2 more doses folded into the 6-in-1 vaccine.",
+            "6-in-1 (DTaP-IPV-Hib-HepB): given at 2, 4, and 6 months, with a booster at 18 months.",
+            "Pneumococcal (PCV13): given at 4, 6, and 12 months."
+          ],
+          "mustRemember": "All National Childhood Immunisation Schedule (NCIS) vaccines are fully subsidised for Singapore Citizen children at polyclinics." },
+        { "id": "health02", "title": "Fever in the first 3 months: not the same as later",
+          "why": "The threshold for \"call now\" is much lower than most people expect at this age.",
+          "facts": [
+            "Any rectal temperature of 38°C (100.4°F) or higher in a baby under 3 months needs urgent medical evaluation — there's no \"mild fever\" category at this age.",
+            "This is because a young baby's immune system can't yet reliably fight off infection — what looks mild can be serious.",
+            "Call your pediatrician immediately; if you can't reach them within a few minutes, go straight to the emergency department."
+          ],
+          "mustRemember": "Fever ≥38°C in a baby under 3 months means call now — don't wait it out." },
+        { "id": "health03", "title": "Jaundice: normal vs. worrying",
+          "why": "About 6 in 10 newborns get some jaundice — knowing the difference between routine and urgent matters.",
+          "facts": [
+            "Jaundice (yellowing skin/eyes from bilirubin) affects about 60% of newborns, usually appearing 3–5 days after birth.",
+            "It typically resolves on its own within 2 weeks, without treatment.",
+            "Call your doctor if it worsens, spreads to the arms/legs/whites of the eyes, or baby is hard to wake, feeding poorly, or it lasts beyond 2 weeks."
+          ] },
+        { "id": "health04", "title": "Common skin and tummy quirks that usually aren't a problem",
+          "why": "A few very normal newborn things look alarming the first time you see them.",
+          "facts": [
+            "Cradle cap — scaly, oily patches on the scalp from maternal hormones. Harmless and painless, usually clears on its own within months.",
+            "Baby acne — small facial bumps, also hormone-driven. Harmless; no treatment needed beyond gentle cleansing.",
+            "Reflux/spit-up — very common in the first 3 months. Normal if baby still seems happy, hungry, and is gaining weight; get checked promptly if it looks like real vomiting or baby seems unwell, especially in the first month."
+          ] }
+      ],
+      "takeaway": "Trust your gut over the internet for most things — but fever ≥38°C in a baby under 3 months, or jaundice that's worsening or lasting past 2 weeks, means call now, not later."
     }
   ]
 }
