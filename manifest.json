@@ -1,0 +1,8 @@
+{
+  "name": "The Deck",
+  "short_name": "The Deck",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#faf7f1",
+  "theme_color": "#2f5d3a"
+}

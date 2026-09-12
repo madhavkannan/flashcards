@@ -1,0 +1,6 @@
+{
+  "topics": [
+    { "id": "dad-prep", "file": "dad-prep.json" },
+    { "id": "voice-ai", "file": "voice-ai.json" }
+  ]
+}

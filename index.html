@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2f5d3a">
+<link rel="manifest" href="manifest.json">
+<title>The Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <div class="masthead-brand">
+      <span class="logo-mark">D</span>
+      <h1>The Deck</h1>
+    </div>
+    <div class="mode-toggle">
+      <button class="mode-btn active" data-mode="study" id="modeStudyBtn">Study</button>
+      <button class="mode-btn" data-mode="feed" id="modeFeedBtn">Feed</button>
+    </div>
+  </div>
+
+  <div class="progress-strip">
+    <span id="pctLabel">0%</span>
+    <div class="bar" id="overallBar"></div>
+    <span id="learnedCount">0 / 0 learned</span>
+  </div>
+
+  <div class="view-toggle">
+    <button id="toggleFlagged">Must-remember list →</button>
+  </div>
+
+  <!-- STUDY MODE -->
+  <div id="studyView" class="view">
+    <div class="topic-tabs" id="topicTabs"></div>
+    <div class="module-tabs" id="moduleTabs"></div>
+    <div id="studyCardHost"></div>
+    <div class="nav-row">
+      <button class="nav-btn" id="prevBtn">← prev</button>
+      <span class="nav-pos" id="posLabel"></span>
+      <button class="nav-btn" id="nextBtn">next →</button>
+    </div>
+  </div>
+
+  <!-- FEED MODE -->
+  <div id="feedView" class="view hide">
+    <p class="feed-hint">Pulled from all your topics. New cards come first; cards you've marked learned resurface later for review, so this never runs dry. Tap "Next" whenever you'd otherwise be doomscrolling.</p>
+    <div id="feedCardHost"></div>
+    <div class="nav-row feed-nav-row">
+      <button class="btn wide" id="feedNextBtn">Next card →</button>
+    </div>
+  </div>
+
+  <!-- FLAGGED LIST -->
+  <div id="flaggedView" class="flagged-list">
+    <div class="view-toggle">
+      <button id="backToDeck">← back</button>
+    </div>
+    <div id="flaggedHost"></div>
+  </div>
+
+  <div class="empty-state hide" id="emptyState">
+    <p>No content loaded yet. Add a topic JSON file to <code>/content</code> and list it in <code>content/index.json</code>.</p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

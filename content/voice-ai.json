@@ -1,0 +1,112 @@
+{
+  "id": "voice-ai",
+  "title": "Voice AI Fundamentals",
+  "color": "#B5811E",
+  "modules": [
+    {
+      "id": "fundamentals",
+      "label": "Fundamentals",
+      "lessons": [
+        { "id": "va01", "title": "The three building blocks of a voice agent",
+          "why": "Every voice AI pitch, Deepgram's or Sierra's, is a variation on how these three pieces are arranged.",
+          "facts": [
+            "ASR (automatic speech recognition): audio in, text out — turns what the caller said into words.",
+            "The reasoning layer: an LLM or dialogue manager that decides what to say back.",
+            "TTS (text-to-speech): text in, audio out — turns the response into a voice the caller hears."
+          ],
+          "detail": "This 'cascaded' pipeline (ASR → LLM → TTS) is still the dominant architecture in production voice agents because each stage can be swapped, tested, and monitored independently. The alternative — speech-to-speech (STS) native models that skip the intermediate text step — is newer and promises lower latency and more natural prosody, but is harder to debug and constrain (you can't easily insert business logic or guardrails between 'hearing' and 'speaking' when there's no text in between)." },
+        { "id": "va02", "title": "Cascaded vs. speech-to-speech architectures",
+          "why": "This is the single biggest architectural fork in the industry right now, and both Sierra and Deepgram sit on opposite defaults.",
+          "facts": [
+            "Cascaded: ASR, LLM, and TTS are separate models/services stitched together — flexible, debuggable, easier to add business logic between steps.",
+            "Speech-to-speech (STS): a single model processes audio in and audio out directly, without a text intermediate — lower latency, more natural turn-taking, but a harder-to-inspect 'black box'.",
+            "Deepgram's Voice Agent API is a hybrid: it bundles STT + TTS + LLM orchestration behind one WebSocket connection so teams get a single integration without giving up the cascaded model's inspectability."
+          ] },
+        { "id": "va03", "title": "Why latency is the whole game",
+          "why": "In voice, latency isn't a performance metric — it's the product. A 1.5-second pause reads as broken, not thoughtful.",
+          "facts": [
+            "Human conversation has a natural turn-taking gap of roughly 200ms — anything much longer starts to feel unnatural.",
+            "Time-to-first-byte (TTFB) on TTS and streaming (rather than batch) ASR are the two biggest levers for shaving latency.",
+            "Deepgram markets sub-300ms STT and sub-200ms TTS as headline numbers — in interviews, expect latency to come up as the primary technical differentiator, not accuracy."
+          ],
+          "mustRemember": "If asked to compare voice AI vendors, latency budget (not just word error rate) is usually the sharper technical question to ask." },
+        { "id": "va04", "title": "Streaming vs. batch ASR",
+          "why": "Confusing these in an interview is an easy tell that you haven't built with the tech.",
+          "facts": [
+            "Streaming ASR transcribes audio continuously as it arrives, word by word — required for any live conversational agent.",
+            "Batch ASR processes a complete audio file after the fact — used for things like call transcription, captioning, or analytics, not live dialogue.",
+            "Streaming is technically harder: the model must commit to partial transcripts before the speaker has finished, then revise them ('re-scoring') as more audio arrives."
+          ] },
+        { "id": "va05", "title": "Endpointing and turn-taking",
+          "why": "This is the unglamorous problem that makes or breaks how natural a voice agent feels.",
+          "facts": [
+            "Endpointing is the system deciding 'the user has finished speaking' — too aggressive and it cuts people off; too slow and it feels laggy.",
+            "Voice activity detection (VAD) distinguishes speech from silence/noise, and feeds the endpointing decision.",
+            "Barge-in is when a caller interrupts the agent mid-response — handling it gracefully (stopping TTS instantly, re-listening) is a major UX differentiator."
+          ] }
+      ]
+    },
+    {
+      "id": "architecture",
+      "label": "Architecture & Ops",
+      "lessons": [
+        { "id": "va06", "title": "Where the LLM fits in a voice stack",
+          "why": "This connects your existing RAG/agentic-architecture knowledge directly to the voice-specific layer.",
+          "facts": [
+            "The LLM in a voice agent still does the same job as in a chat agent — reasoning, tool-calling, retrieval — but on a much tighter latency budget.",
+            "Voice agents often use smaller or distilled models for the first response token, then a larger model for anything that can happen 'in the background' (e.g. logging, summarization).",
+            "Function/tool-calling still applies identically — a voice agent booking an appointment is calling the same kind of API a chat agent would."
+          ] },
+        { "id": "va07", "title": "Diarization and multi-speaker handling",
+          "why": "Comes up constantly in enterprise call-center use cases — worth knowing the term cold.",
+          "facts": [
+            "Diarization is labeling 'who said what' in a multi-speaker audio stream (e.g. agent vs. customer, or multiple people on a call).",
+            "Critical for call-center analytics, QA, and compliance — not usually needed for a simple 1:1 voice agent.",
+            "Accuracy degrades with crosstalk, overlapping speech, and similar-sounding voices — a known limitation worth naming if asked about edge cases."
+          ] },
+        { "id": "va08", "title": "Deployment models: cloud API vs. on-prem/VPC",
+          "why": "Enterprise buyers (Sierra and Deepgram's actual customers) care about this more than raw model quality.",
+          "facts": [
+            "Cloud API: fastest to integrate, usage-based pricing, data leaves the customer's environment.",
+            "VPC / self-hosted / on-prem: required for regulated industries (healthcare, finance, government) where data residency and compliance are non-negotiable.",
+            "Deepgram explicitly sells both — cloud APIs and self-hosted deployments — which is a meaningful differentiator versus API-only competitors."
+          ] },
+        { "id": "va09", "title": "Voice agent evaluation metrics",
+          "why": "If you're asked 'how would you measure if this voice agent is working,' this is the checklist.",
+          "facts": [
+            "Accuracy: word error rate (WER) for ASR, and task success / containment rate for the agent overall (did it resolve the call without a human?).",
+            "Latency: time-to-first-byte and end-to-end response time, usually tracked at p50/p90/p99, not just average.",
+            "Experience: interruption/barge-in handling rate, sentiment trend across the call, and escalation rate to a human agent."
+          ],
+          "mustRemember": "Containment rate (% of calls resolved without human handoff) is usually the metric enterprise buyers actually care about — lead with it over raw accuracy in a business conversation." }
+      ]
+    },
+    {
+      "id": "positioning",
+      "label": "Company Positioning",
+      "lessons": [
+        { "id": "va10", "title": "Deepgram's position in the stack",
+          "why": "Understanding exactly what layer a company sells at is the fastest way to sound credible in an interview.",
+          "facts": [
+            "Deepgram is voice AI infrastructure: an API/platform company selling STT, TTS, and a bundled Voice Agent API to developers building on top.",
+            "Its customers are typically ISVs and enterprises building their own voice products, not end consumers — it's a picks-and-shovels business.",
+            "It differentiates on latency, accuracy in noisy/accented audio, and deployment flexibility (cloud, VPC, on-prem) rather than on having its own branded end-user agent."
+          ] },
+        { "id": "va11", "title": "Sierra's position in the stack",
+          "why": "The contrast with Deepgram is the sharpest way to show you understand the competitive landscape, not just the tech.",
+          "facts": [
+            "Sierra builds branded, vertical conversational agents for enterprises — the finished customer-facing product, not raw infrastructure.",
+            "It sells to business/CX leaders (a platform decision), not primarily to developers integrating an API — a different buyer and sales motion than Deepgram.",
+            "Sierra's agents span both chat and voice, so infrastructure providers like Deepgram are potential vendors underneath a Sierra-style platform, not direct competitors to it."
+          ] },
+        { "id": "va12", "title": "Framing your pitch for each interview",
+          "why": "The same knowledge base, aimed differently, depending on who's across the table.",
+          "facts": [
+            "For Deepgram (infra company): emphasize your grasp of the technical stack — latency budgets, deployment models, evaluation metrics — since you'd be talking to developers and technical buyers.",
+            "For Sierra (applied agent platform): emphasize outcomes and stakeholder management — containment rate, CX impact, rollout strategy — since you'd be talking to business buyers.",
+            "In both cases, naming the cascaded-vs-speech-to-speech tradeoff unprompted signals real fluency rather than surface-level familiarity."
+          ] }
+      ]
+    }
+  ]
+}
