@@ -228,7 +228,14 @@
             "It typically lasts 2–6 weeks: more night wakings, shorter naps, harder bedtimes.",
             "Further bumps are common around 8–10 months and 12 months, usually tied to developmental leaps or teething."
           ] },
-        { "id": "sl05", "title": "How naps evolve",
+        { "id": "sl05", "title": "Developmental leaps",
+          "why": "A useful lens for the fussy stretches that don't have an obvious cause — most trace back to a leap, not something wrong.",
+          "facts": [
+            "Many parents track these using a framework called \"developmental leaps\" (popularized as \"Wonder Weeks\") — periods of rapid perceptual/cognitive development, roughly around weeks 5, 8, 12, 19, 26, 37, and 46, though timing varies a lot by baby.",
+            "Each leap tends to have a fussy phase first — more crying, clinginess, disrupted sleep, eating less — followed by a noticeable new skill or awareness.",
+            "It's a popular parenting framework, not a strict medical schedule — useful as a reassuring lens for an otherwise unexplained fussy stretch, not something to plan life around precisely."
+          ] },
+        { "id": "sl06", "title": "How naps evolve",
           "why": "There's no one \"right\" nap schedule — it shifts predictably as babies get older.",
           "facts": [
             "Newborns nap in short, frequent bursts with no real pattern.",
