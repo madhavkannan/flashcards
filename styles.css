@@ -144,8 +144,9 @@ body{
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
   flex-shrink: 0; margin-left: 8px;
 }
-.badge--new{ background: var(--accent-soft); color: var(--accent); }
+.badge--new, .badge--overview{ background: var(--accent-soft); color: var(--accent); }
 .badge--due, .badge--early{ background: var(--pill); color: var(--pill-text); }
+.badge--takeaway{ background: var(--escalated-bg); color: var(--escalated-text); }
 
 .card h2{ font-size: 21px; line-height: 1.3; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
 .card .why{ font-size: 14px; color: var(--text-muted); margin: 0 0 14px; line-height: 1.45; }
@@ -156,6 +157,27 @@ body{
 }
 .facts li:first-child{ border-top: none; }
 .facts li::before{ content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+.media-embed{
+  aspect-ratio: 16 / 9; width: 100%; margin: 14px 0;
+  border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
+  background: var(--pill);
+}
+.media-embed iframe, .media-embed img{
+  width: 100%; height: 100%; border: none; display: block; object-fit: cover;
+}
+.media-caption{
+  font-size: 12.5px; color: var(--text-muted); margin: -8px 0 14px;
+}
+
+.card.bookend{
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: 160px; text-align: center;
+}
+.bookend-text{
+  font-size: 18px; line-height: 1.5; font-weight: 600; color: var(--text);
+  margin: 8px 0 0;
+}
 
 .detail-toggle{
   margin-top: 10px; background:none; border:none; font-family: inherit;

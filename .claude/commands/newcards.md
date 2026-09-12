@@ -32,6 +32,14 @@ a conversation or document to draw from, or a file path to read.
    cards over padding out a round number. If the source material is thin,
    producing 2 good cards is correct; don't stretch it to 6.
 
+   That said, favor more, smaller cards over one dense card once there's
+   real material: if what you're drafting covers more than one genuinely
+   separate idea (a checklist, *and* a named technique with several
+   distinct steps, *and* a special-case fact), split it into one card
+   per idea rather than compressing all of it into a single card's 2-4
+   bullets. A technique with named steps (e.g. "the 5 S's") deserves one
+   card per step, not one card listing all of them.
+
 4. Draft each new lesson following the exact schema in CONTENT_GUIDE.md:
    - `title` — short, specific, not generic
    - `why` — one sentence on why this is worth knowing, not a restatement of the title
@@ -41,6 +49,15 @@ a conversation or document to draw from, or a file path to read.
      paragraph of depth beyond the bullets
    - `mustRemember` — optional, reserve for the single most critical fact in
      that lesson if there is one; most lessons don't need it
+   - `media` — optional, only when a technique genuinely benefits from a
+     video/gif demo. Never invent a URL or video id — if you don't have a
+     verified real link, leave `media` off and tell me a demo would help
+     rather than guessing one.
+
+   If a module ends up covering enough ground to want a "here's the
+   shape of this" framing at the start and a "here's the one thing to
+   remember" at the end, add `summary`/`takeaway` on the module (not
+   every module needs them — see CONTENT_GUIDE.md).
 
    Assign each new lesson a unique `id` within its module (short, lowercase,
    e.g. `va13`), and place it in the most fitting existing module, or a new

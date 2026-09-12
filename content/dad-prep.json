@@ -84,22 +84,105 @@
             "Change before or right after feeds, and immediately after a bowel movement.",
             "For boys, point the penis downward before closing the diaper to avoid leaks upward.",
             "Watch for diaper rash — treat early with a barrier cream and more frequent changes."
-          ] },
-        { "id": "new05", "title": "Soothing a crying baby",
-          "why": "Crying is communication, not a problem to fear.",
-          "facts": [
-            "Run through the checklist: hungry, wet, tired, too hot/cold, wants to be held, overstimulated.",
-            "The \"5 S's\" method: swaddle, side/stomach hold, shush, swing (gentle motion), suck (pacifier or feed).",
-            "\"Purple crying\" — a stretch of unexplained crying peaking around 6 weeks — is normal and usually resolves by 3–4 months."
-          ] },
-        { "id": "new06", "title": "Newborn sleep patterns",
-          "why": "Setting expectations early prevents a lot of unnecessary worry.",
-          "facts": [
-            "Newborns sleep 14–17 hours a day but rarely more than 2–4 hours at a stretch, day or night.",
-            "Day/night confusion is normal early on — sunlight exposure and daytime activity help reset it over a few weeks.",
-            "A consistent short wind-down routine (dim lights, swaddle, quiet) can start from week one."
           ] }
       ]
+    },
+    {
+      "id": "crying",
+      "label": "Crying & Soothing",
+      "summary": "Crying is communication, not danger — work the checklist first, then reach for the 5 S's.",
+      "lessons": [
+        { "id": "cry01", "title": "The quick checklist before anything else",
+          "why": "Most crying has a simple, fixable cause — check these before assuming something's wrong.",
+          "facts": [
+            "Hungry — the most common cause, especially in the first weeks.",
+            "Tired, wet or soiled, too hot or too cold, or simply wants to be held.",
+            "Overstimulated — sometimes a quiet, dim room is the fix, not more input."
+          ] },
+        { "id": "cry02", "title": "The 5 S's: the idea",
+          "why": "Dr. Harvey Karp's \"5 S's\" recreate the womb environment and reliably trigger a newborn's calming reflex.",
+          "facts": [
+            "Swaddle, side/stomach hold, shush, swing, and suck — five specific techniques, not a random list.",
+            "Each one mimics a condition in the womb: snugness, being held, constant whooshing noise, motion, sucking.",
+            "Try them together rather than one at a time — most parents find a combination works better than any single S alone."
+          ],
+          "media": { "type": "youtube", "id": "6Cido2md4Y4", "caption": "The 5 S's to Soothe Your Baby — Dr. Harvey Karp, Happiest Baby" } },
+        { "id": "cry03", "title": "S #1: Swaddle",
+          "why": "Recreates the snugness of the womb and stops a baby's own startle reflex from waking them back up.",
+          "facts": [
+            "Wrap snugly with arms in; leave room at the hips for legs to bend up and out, frog-style.",
+            "Snug at the chest, looser at the hips — swaddling the legs too tightly raises hip dysplasia risk.",
+            "Stop swaddling for sleep the moment baby shows signs of rolling — a swaddled roll is a suffocation risk."
+          ],
+          "media": { "type": "youtube", "id": "VJB4RdwsM8o", "caption": "Swaddle Your Baby Like a Pro: Pediatrician Tips" } },
+        { "id": "cry04", "title": "S #2: Side or stomach hold",
+          "why": "A different position and belly pressure than an upright cradle hold — often calms a baby a cradle hold doesn't.",
+          "facts": [
+            "Hold baby on their side or stomach along your forearm, supporting the head and neck.",
+            "This is for soothing while awake and supervised only — never a sleep position.",
+            "Sleep must always be on the back, alone, in the crib (see Safe Sleep Basics) — this hold is just for calming."
+          ] },
+        { "id": "cry05", "title": "S #3: Shush",
+          "why": "Newborns just spent 9 months next to the loud whoosh of blood flow — near-silence is unfamiliar, not soothing.",
+          "facts": [
+            "A loud, continuous \"shhh\" held right next to baby's ear — louder than most parents expect at first.",
+            "A white-noise machine or app works too, as long as it's loud and continuous rather than soft and intermittent.",
+            "Match the shush volume to how hard the baby is crying, then taper it down gradually as they calm."
+          ] },
+        { "id": "cry06", "title": "S #4: Swing",
+          "why": "Stillness is the least womb-like state — motion is what most reliably keeps the calming reflex switched on.",
+          "facts": [
+            "Small, fast, rhythmic motion — a tight jiggle, not a big slow rock.",
+            "Always support the head and neck fully; the motion should never be a shake or a jerk.",
+            "Once baby is calm, the motion can be slowed down gradually rather than stopped abruptly."
+          ] },
+        { "id": "cry07", "title": "S #5: Suck",
+          "why": "Sucking triggers one of the strongest newborn calming reflexes, separate from actual hunger.",
+          "facts": [
+            "A pacifier or a clean finger works if baby isn't due for a feed.",
+            "Offering the breast or bottle works too, if you're not trying to avoid comfort-feeding.",
+            "Often the most effective added last, once the other S's have already gotten baby partway calm."
+          ] },
+        { "id": "cry08", "title": "Purple crying is real, and it's not your fault",
+          "why": "Some crying has no fixable cause at all — knowing this in advance heads off a lot of self-blame.",
+          "facts": [
+            "\"Purple crying\" is a normal stretch of unexplained, hard-to-soothe crying that peaks around 6 weeks.",
+            "It usually resolves on its own by 3–4 months, regardless of what soothing method you use.",
+            "It's named and taught specifically to prevent shaken baby syndrome — the crying is not a sign you're doing something wrong."
+          ],
+          "mustRemember": "If nothing is working and you feel your own frustration rising, it's safe to put baby down in the crib and step away for a few minutes. Never shake a baby.",
+          "media": { "type": "youtube", "id": "X0SXJQ0a-QY", "caption": "The Period of PURPLE Crying — National Center on Shaken Baby Syndrome" } }
+      ],
+      "takeaway": "If nothing is working after a real effort, it's safe to put baby down in the crib and step away for a few minutes. Never shake a baby."
+    },
+    {
+      "id": "sleep",
+      "label": "Sleep",
+      "summary": "Newborn sleep looks chaotic by adult standards — that's normal, not a sign anything's wrong.",
+      "lessons": [
+        { "id": "sl01", "title": "How much newborns actually sleep",
+          "why": "Knowing the real numbers ahead of time stops you from panicking over something that's completely normal.",
+          "facts": [
+            "Newborns sleep 14–17 hours a day in total.",
+            "But rarely more than 2–4 hours at a single stretch, day or night.",
+            "This comes from their small stomachs and short sleep cycles — not something you can train away early on."
+          ] },
+        { "id": "sl02", "title": "Fixing day/night confusion",
+          "why": "Newborns are born with no sense of day and night — you have to help them learn it.",
+          "facts": [
+            "Being more alert at night and sleepier by day is normal in the first weeks.",
+            "Bright light and activity during the day, dim and quiet at night, help reset the body clock.",
+            "It typically resolves within a few weeks as their circadian rhythm matures."
+          ] },
+        { "id": "sl03", "title": "Starting a wind-down routine early",
+          "why": "The specific routine matters less than starting the habit of one, consistently, from day one.",
+          "facts": [
+            "A short, consistent wind-down (dim lights, swaddle, quiet) can start from week one.",
+            "Consistency matters more than the exact steps — babies respond to the pattern repeating.",
+            "It won't produce a predictable schedule yet, but it lays the groundwork for one later."
+          ] }
+      ],
+      "takeaway": "Expect fragmented, unpredictable sleep for months — focus on safety (see Safe Sleep Basics), not a schedule, for now."
     },
     {
       "id": "postpartum",

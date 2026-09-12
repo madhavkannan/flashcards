@@ -171,25 +171,45 @@ function renderStudyTabs(){
   });
 }
 
+// A module's study positions run from -1 (summary bookend, if present)
+// through its real lesson indices to lessons.length (takeaway bookend,
+// if present) — see renderStudyCard/renderBookendCard.
+function studyBounds(mod){
+  return {
+    min: mod.summary ? -1 : 0,
+    max: mod.lessons.length - 1 + (mod.takeaway ? 1 : 0)
+  };
+}
+
 function renderStudyCard(){
   const topic = topics.find(t => t.id === state.studyTopic);
   const host = document.getElementById('studyCardHost');
   if(!topic){ host.innerHTML = ''; return; }
   const mod = topic.modules.find(m => m.id === state.studyModule) || topic.modules[0];
   const key = `${topic.id}:${mod.id}`;
-  let idx = state.studyIndexByModuleKey[key] || 0;
-  if(idx >= mod.lessons.length) idx = mod.lessons.length - 1;
-  if(idx < 0) idx = 0;
+  const { min, max } = studyBounds(mod);
+  let idx = state.studyIndexByModuleKey[key];
+  if(idx === undefined) idx = min;
+  if(idx > max) idx = max;
+  if(idx < min) idx = min;
   state.studyIndexByModuleKey[key] = idx;
-  const lesson = mod.lessons[idx];
-  if(!lesson){ host.innerHTML = ''; return; }
 
-  const gid = globalId(topic.id, mod.id, lesson.id);
-  renderCardInto(host, topic, mod, lesson, gid, { showDetailOpenByDefault: true });
+  if(idx === -1){
+    renderBookendCard(host, topic, mod, 'summary');
+    document.getElementById('posLabel').textContent = 'Overview';
+  } else if(idx === mod.lessons.length){
+    renderBookendCard(host, topic, mod, 'takeaway');
+    document.getElementById('posLabel').textContent = 'Key takeaway';
+  } else {
+    const lesson = mod.lessons[idx];
+    if(!lesson){ host.innerHTML = ''; return; }
+    const gid = globalId(topic.id, mod.id, lesson.id);
+    renderCardInto(host, topic, mod, lesson, gid, { showDetailOpenByDefault: true });
+    document.getElementById('posLabel').textContent = (idx+1) + ' of ' + mod.lessons.length;
+  }
 
-  document.getElementById('posLabel').textContent = (idx+1) + ' of ' + mod.lessons.length;
-  document.getElementById('prevBtn').disabled = idx === 0;
-  document.getElementById('nextBtn').disabled = idx === mod.lessons.length - 1;
+  document.getElementById('prevBtn').disabled = idx === min;
+  document.getElementById('nextBtn').disabled = idx === max;
 }
 
 function renderStudy(){
@@ -205,15 +225,18 @@ document.getElementById('prevBtn').onclick = () => {
   const topic = topics.find(t => t.id === state.studyTopic);
   const mod = topic.modules.find(m => m.id === state.studyModule);
   const key = `${topic.id}:${mod.id}`;
-  state.studyIndexByModuleKey[key] = Math.max(0, (state.studyIndexByModuleKey[key]||0) - 1);
+  const { min } = studyBounds(mod);
+  const cur = state.studyIndexByModuleKey[key];
+  state.studyIndexByModuleKey[key] = Math.max(min, (cur === undefined ? min : cur) - 1);
   saveState(); renderStudyCard(); renderOverall();
 };
 document.getElementById('nextBtn').onclick = () => {
   const topic = topics.find(t => t.id === state.studyTopic);
   const mod = topic.modules.find(m => m.id === state.studyModule);
   const key = `${topic.id}:${mod.id}`;
-  const max = mod.lessons.length - 1;
-  state.studyIndexByModuleKey[key] = Math.min(max, (state.studyIndexByModuleKey[key]||0) + 1);
+  const { min, max } = studyBounds(mod);
+  const cur = state.studyIndexByModuleKey[key];
+  state.studyIndexByModuleKey[key] = Math.min(max, (cur === undefined ? min : cur) + 1);
   saveState(); renderStudyCard(); renderOverall();
 };
 
@@ -230,6 +253,50 @@ function renderFeed(){
 document.getElementById('feedNextBtn').onclick = () => {
   renderFeed();
 };
+
+// ---------- module summary/takeaway bookend cards ----------
+function renderBookendCard(host, topic, mod, kind){
+  const isTakeaway = kind === 'takeaway';
+  const text = isTakeaway ? mod.takeaway : mod.summary;
+  const badgeText = isTakeaway ? 'KEY TAKEAWAY' : 'OVERVIEW';
+  const badgeClass = isTakeaway ? 'badge badge--takeaway' : 'badge badge--overview';
+
+  host.innerHTML = `
+    <div class="card bookend" style="--topic-color:${topic.color};">
+      <div class="card-meta">
+        <span>${topic.title.toUpperCase()} · ${mod.label.toUpperCase()}</span>
+        <span class="${badgeClass}">${badgeText}</span>
+      </div>
+      <p class="bookend-text">${text}</p>
+    </div>
+  `;
+}
+
+// ---------- lesson media (video/gif) ----------
+function renderMedia(media){
+  if(!media) return '';
+  const caption = media.caption ? media.caption.replace(/"/g, '&quot;') : '';
+  if(media.type === 'youtube'){
+    return `
+      <div class="media-embed">
+        <iframe src="https://www.youtube-nocookie.com/embed/${media.id}"
+          title="${caption || 'Video'}" loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      ${media.caption ? `<p class="media-caption">${media.caption}</p>` : ''}
+    `;
+  }
+  if(media.type === 'image'){
+    return `
+      <div class="media-embed">
+        <img src="${media.url}" alt="${caption}" loading="lazy">
+      </div>
+      ${media.caption ? `<p class="media-caption">${media.caption}</p>` : ''}
+    `;
+  }
+  return '';
+}
 
 // ---------- shared card renderer ----------
 function renderCardInto(host, topic, mod, lesson, gid, opts){
@@ -251,6 +318,7 @@ function renderCardInto(host, topic, mod, lesson, gid, opts){
       <ul class="facts">
         ${lesson.facts.map(f => `<li>${f}</li>`).join('')}
       </ul>
+      ${renderMedia(lesson.media)}
       ${lesson.detail ? `
         <button class="detail-toggle" id="${detailId}-btn">Read more ▾</button>
         <div class="detail-body" id="${detailId}">${lesson.detail}</div>
