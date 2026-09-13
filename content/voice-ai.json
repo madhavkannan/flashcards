@@ -6,6 +6,7 @@
     {
       "id": "fundamentals",
       "label": "Fundamentals",
+      "summary": "Voice AI is three components stitched together under a brutal latency budget — everything else in the field is a variation on that.",
       "lessons": [
         { "id": "va01", "title": "The three building blocks of a voice agent",
           "why": "Every voice AI pitch, Deepgram's or Sierra's, is a variation on how these three pieces are arranged.",
@@ -13,14 +14,41 @@
             "ASR (automatic speech recognition): audio in, text out — turns what the caller said into words.",
             "The reasoning layer: an LLM or dialogue manager that decides what to say back.",
             "TTS (text-to-speech): text in, audio out — turns the response into a voice the caller hears."
-          ],
-          "detail": "This 'cascaded' pipeline (ASR → LLM → TTS) is still the dominant architecture in production voice agents because each stage can be swapped, tested, and monitored independently. The alternative — speech-to-speech (STS) native models that skip the intermediate text step — is newer and promises lower latency and more natural prosody, but is harder to debug and constrain (you can't easily insert business logic or guardrails between 'hearing' and 'speaking' when there's no text in between)." },
+          ] },
+        { "id": "va01b", "title": "ASR: what it actually does",
+          "why": "Worth understanding as its own component, not just as 'step one' of the pipeline.",
+          "facts": [
+            "Its whole job is turning audio into accurate text, fast enough to feed a live conversation.",
+            "Word error rate (WER) is the standard accuracy metric — the percentage of words transcribed wrong.",
+            "Accuracy depends heavily on accent, background noise, and domain-specific vocabulary — a model that scores well on clean, standard-accent audio can degrade a lot on a real phone line."
+          ] },
+        { "id": "va01c", "title": "TTS: what it actually does",
+          "why": "The other bookend of the pipeline — often under-discussed compared to ASR and the LLM.",
+          "facts": [
+            "Its job is turning text into audio that sounds natural enough to hold a caller's attention and trust.",
+            "Modern TTS uses neural vocoders, producing far more natural prosody (rhythm, intonation) than older concatenative or parametric synthesis.",
+            "Like ASR, it runs under a real-time constraint — time-to-first-byte on the audio output matters as much as how natural it sounds."
+          ] },
         { "id": "va02", "title": "Cascaded vs. speech-to-speech architectures",
           "why": "This is the single biggest architectural fork in the industry right now, and both Sierra and Deepgram sit on opposite defaults.",
           "facts": [
             "Cascaded: ASR, LLM, and TTS are separate models/services stitched together — flexible, debuggable, easier to add business logic between steps.",
             "Speech-to-speech (STS): a single model processes audio in and audio out directly, without a text intermediate — lower latency, more natural turn-taking, but a harder-to-inspect 'black box'.",
             "Deepgram's Voice Agent API is a hybrid: it bundles STT + TTS + LLM orchestration behind one WebSocket connection so teams get a single integration without giving up the cascaded model's inspectability."
+          ] },
+        { "id": "va02b", "title": "Cascaded architecture, in depth",
+          "why": "Still the dominant architecture in production voice agents — worth knowing exactly why it's dominant, not just that it is.",
+          "facts": [
+            "Each stage (ASR, LLM, TTS) can be swapped, tested, and monitored independently — you can upgrade just the ASR model without touching the rest.",
+            "Text is a natural place to insert business logic and guardrails — content filtering, tool-calling, compliance checks — between 'hearing' and 'speaking'.",
+            "The tradeoff is latency: three hops instead of one adds up, even if each hop is individually fast."
+          ] },
+        { "id": "va02c", "title": "Speech-to-speech (STS) architecture, in depth",
+          "why": "The newer, faster-moving side of the fork — likely to come up if an interviewer wants to test how current your knowledge is.",
+          "facts": [
+            "A single model processes audio in and audio out directly, skipping the text intermediate entirely.",
+            "This removes the latency of three separate hops and can produce more natural turn-taking and prosody.",
+            "The real cost is inspectability: with no text step, it's much harder to insert guardrails, business logic, or debug exactly why the model said what it said."
           ] },
         { "id": "va03", "title": "Why latency is the whole game",
           "why": "In voice, latency isn't a performance metric — it's the product. A 1.5-second pause reads as broken, not thoughtful.",
@@ -37,18 +65,34 @@
             "Batch ASR processes a complete audio file after the fact — used for things like call transcription, captioning, or analytics, not live dialogue.",
             "Streaming is technically harder: the model must commit to partial transcripts before the speaker has finished, then revise them ('re-scoring') as more audio arrives."
           ] },
-        { "id": "va05", "title": "Endpointing and turn-taking",
-          "why": "This is the unglamorous problem that makes or breaks how natural a voice agent feels.",
+        { "id": "va05", "title": "Endpointing",
+          "why": "The unglamorous problem that makes or breaks how natural a voice agent feels.",
           "facts": [
-            "Endpointing is the system deciding 'the user has finished speaking' — too aggressive and it cuts people off; too slow and it feels laggy.",
-            "Voice activity detection (VAD) distinguishes speech from silence/noise, and feeds the endpointing decision.",
-            "Barge-in is when a caller interrupts the agent mid-response — handling it gracefully (stopping TTS instantly, re-listening) is a major UX differentiator."
+            "Endpointing is the system deciding \"the user has finished speaking.\"",
+            "Too aggressive and it cuts people off mid-sentence; too slow and every exchange feels laggy.",
+            "Getting this right is one of the hardest tuning problems in a voice pipeline, precisely because the right answer changes by speaker and context."
+          ] },
+        { "id": "va05b", "title": "Voice activity detection (VAD)",
+          "why": "The signal that feeds the endpointing decision — worth knowing as its own named concept.",
+          "facts": [
+            "VAD distinguishes speech from silence or background noise in the audio stream.",
+            "It runs continuously and feeds its output into the endpointing decision.",
+            "Poor VAD in a noisy environment (a call center floor, a car) is a common real-world failure mode worth naming if asked about edge cases."
+          ] },
+        { "id": "va05c", "title": "Barge-in handling",
+          "why": "One of the clearest UX differentiators between a good and a mediocre voice agent.",
+          "facts": [
+            "Barge-in is when a caller interrupts the agent mid-response.",
+            "Handling it gracefully means stopping TTS output instantly and re-listening, not finishing the sentence first.",
+            "Getting this wrong is one of the fastest ways a voice agent feels robotic rather than conversational."
           ] }
-      ]
+      ],
+      "takeaway": "If you remember nothing else: latency budget and the cascaded-vs-speech-to-speech fork are the two things that come up in almost every real conversation about this space."
     },
     {
       "id": "architecture",
       "label": "Architecture & Ops",
+      "summary": "The operational and infra-level decisions that separate \"it demos well\" from \"it's ready for an enterprise deployment.\"",
       "lessons": [
         { "id": "va06", "title": "Where the LLM fits in a voice stack",
           "why": "This connects your existing RAG/agentic-architecture knowledge directly to the voice-specific layer.",
@@ -71,19 +115,34 @@
             "VPC / self-hosted / on-prem: required for regulated industries (healthcare, finance, government) where data residency and compliance are non-negotiable.",
             "Deepgram explicitly sells both — cloud APIs and self-hosted deployments — which is a meaningful differentiator versus API-only competitors."
           ] },
-        { "id": "va09", "title": "Voice agent evaluation metrics",
-          "why": "If you're asked 'how would you measure if this voice agent is working,' this is the checklist.",
+        { "id": "va09", "title": "Accuracy metrics",
+          "why": "The first thing most people think to measure — and the one you should lead with least in a business conversation.",
           "facts": [
-            "Accuracy: word error rate (WER) for ASR, and task success / containment rate for the agent overall (did it resolve the call without a human?).",
-            "Latency: time-to-first-byte and end-to-end response time, usually tracked at p50/p90/p99, not just average.",
-            "Experience: interruption/barge-in handling rate, sentiment trend across the call, and escalation rate to a human agent."
-          ],
-          "mustRemember": "Containment rate (% of calls resolved without human handoff) is usually the metric enterprise buyers actually care about — lead with it over raw accuracy in a business conversation." }
-      ]
+            "Word error rate (WER) for ASR — the percentage of words transcribed wrong.",
+            "Task success rate for the agent overall — did it actually accomplish what the caller wanted?",
+            "Containment rate — the percentage of calls resolved without human handoff."
+          ] },
+        { "id": "va09b", "title": "Latency metrics",
+          "why": "The metric that most directly tracks how the agent *feels* to talk to, not just whether it's technically correct.",
+          "facts": [
+            "Time-to-first-byte (TTFB) on the response — how long before the caller hears anything back.",
+            "End-to-end response time — the full round trip from the caller finishing speaking to the agent's audio starting.",
+            "Tracked at p50/p90/p99, not just average — a good average with a bad p99 still means real callers hit noticeably laggy moments."
+          ] },
+        { "id": "va09c", "title": "Experience metrics",
+          "why": "The hardest to quantify, and often the most predictive of whether users actually trust the agent.",
+          "facts": [
+            "Interruption/barge-in handling rate — how often the agent handles being cut off gracefully versus talking over the caller.",
+            "Sentiment trend across the call — whether the caller's tone gets better or worse as the conversation goes on.",
+            "Escalation rate to a human agent — related to containment rate, but tracked as its own signal of where the agent's limits are."
+          ] }
+      ],
+      "takeaway": "Containment rate (% of calls resolved without human handoff) is usually the metric enterprise buyers actually care about — lead with it over raw accuracy in a business conversation."
     },
     {
       "id": "positioning",
       "label": "Company Positioning",
+      "summary": "Same underlying knowledge, aimed differently depending on whether you're talking to an infra buyer or a CX buyer.",
       "lessons": [
         { "id": "va10", "title": "Deepgram's position in the stack",
           "why": "Understanding exactly what layer a company sells at is the fastest way to sound credible in an interview.",
@@ -106,7 +165,81 @@
             "For Sierra (applied agent platform): emphasize outcomes and stakeholder management — containment rate, CX impact, rollout strategy — since you'd be talking to business buyers.",
             "In both cases, naming the cascaded-vs-speech-to-speech tradeoff unprompted signals real fluency rather than surface-level familiarity."
           ] }
-      ]
+      ],
+      "takeaway": "Naming the cascaded-vs-speech-to-speech tradeoff unprompted, in either interview, signals real fluency rather than surface-level familiarity."
+    },
+    {
+      "id": "companies",
+      "label": "Company Specifics",
+      "summary": "Knowing your interviewer's company's current numbers and trajectory is an easy, high-leverage way to stand out.",
+      "lessons": [
+        { "id": "comp01", "title": "Sierra: founding and business",
+          "why": "The founding story and customer base tell you exactly what kind of company you're interviewing with.",
+          "facts": [
+            "Founded in early 2024 by Bret Taylor (OpenAI chairman, former Salesforce co-CEO, former Google exec) and Clay Bavor (longtime Google executive) — the two met working together at Google.",
+            "Builds branded, vertical conversational agents for enterprises — the finished customer-facing product, not raw infrastructure (see Sierra's position in the stack).",
+            "Notable customers include ADT, Sonos, WeightWatchers, and Casper."
+          ] },
+        { "id": "comp02", "title": "Sierra: funding trajectory",
+          "why": "The growth curve itself is part of the story — worth knowing the path, not just the current number.",
+          "facts": [
+            "Valued at $1B in January 2024, then $4.5B by October 2024 after raising $175M.",
+            "Reached a $10B valuation in September 2025 on a $350M raise.",
+            "Raised $950M in May 2026 at a $15.8B valuation, led by Tiger Global and Google's GV — one of the largest AI funding rounds of the year."
+          ],
+          "mustRemember": "Sierra's valuation roughly tripled from late 2024 to mid-2026 — cite the trajectory, not just the current number, since interviewers reference the growth story." },
+        { "id": "comp03", "title": "Deepgram: founding and business",
+          "why": "A very different shape of company from Sierra — worth being able to state plainly.",
+          "facts": [
+            "Founded by Scott Stephenson, who remains CEO.",
+            "Voice AI infrastructure: sells STT, TTS, and a bundled Voice Agent API to developers (see Deepgram's position in the stack).",
+            "Reached roughly $100M ARR in 2026, growing from about 164 employees in 2024 to roughly 310."
+          ] },
+        { "id": "comp04", "title": "Deepgram: funding trajectory",
+          "why": "Smaller scale than Sierra, but the investor list itself is worth knowing.",
+          "facts": [
+            "Raised a $130M Series C in January 2026 at a $1.3B valuation, led by AVP.",
+            "Existing investors including Alkeon, Madrona, Tiger Global, Y Combinator, and BlackRock-managed funds all joined the round.",
+            "New strategic investors in the round included Twilio, ServiceNow Ventures, SAP, and Citi Ventures — worth noting since those are potential integration/distribution partners, not just financial backers."
+          ] }
+      ],
+      "takeaway": "Sierra ($15.8B, May 2026) and Deepgram ($1.3B, Jan 2026) sit at very different scales and buyer types — cite the specific numbers, not just \"they're both well-funded,\" to sound current rather than generic."
+    },
+    {
+      "id": "practice",
+      "label": "Interview Practice",
+      "summary": "The fastest way to fail one of these interviews isn't lacking knowledge — it's failing to translate it into a direct, confident answer under a real question.",
+      "lessons": [
+        { "id": "prac01", "title": "Q: Walk me through the components of a voice AI pipeline",
+          "why": "A default opening technical question — your chance to immediately signal fluency.",
+          "facts": [
+            "Name the three blocks (ASR, reasoning layer, TTS) and that the dominant production pattern is cascaded, not speech-to-speech.",
+            "Volunteer *why* cascaded still dominates — each stage is independently swappable, testable, and monitorable — before being asked.",
+            "If time allows, name the speech-to-speech alternative and its tradeoff (lower latency, harder to debug/constrain) to show you know the fork exists."
+          ] },
+        { "id": "prac02", "title": "Q: How would you explain latency's importance to a non-technical stakeholder?",
+          "why": "Tests whether you can translate a technical constraint into a business one — a common pivot in these interviews.",
+          "facts": [
+            "Anchor on the ~200ms natural human turn-taking gap — anything much slower reads as \"broken,\" not \"thoughtful.\"",
+            "Reframe latency as a product/trust metric, not a performance number — a laggy agent erodes confidence fast, regardless of accuracy.",
+            "If pushed for numbers, cite the industry-marketed sub-300ms STT / sub-200ms TTS range as the target, while noting real-world latency also depends on the LLM hop in between."
+          ] },
+        { "id": "prac03", "title": "Q: How would you measure whether a voice agent is actually working?",
+          "why": "This is asking you to reproduce the evaluation framework live, not just recite it.",
+          "facts": [
+            "Lead with containment rate (% of calls resolved without human handoff) — the metric enterprise buyers actually care about.",
+            "Back it up with accuracy (WER, task success) and latency (p50/p90/p99, not just average) as supporting metrics.",
+            "Mention experience-level signals too — barge-in handling, sentiment trend, escalation rate — to show you're not only thinking in raw numbers."
+          ] },
+        { "id": "prac04", "title": "Q: What's the difference in how you'd pitch Sierra vs. Deepgram?",
+          "why": "Tests whether you actually understand each company's position, not just its name.",
+          "facts": [
+            "For Deepgram: talk technical stack — latency budgets, deployment flexibility (cloud vs. VPC), evaluation metrics — since you're likely speaking with developers/technical buyers.",
+            "For Sierra: talk outcomes — containment rate, CX impact, rollout strategy — since you're likely speaking with business/CX buyers.",
+            "In either case, naming the cascaded-vs-speech-to-speech tradeoff unprompted signals fluency rather than surface-level familiarity."
+          ] }
+      ],
+      "takeaway": "Every one of these questions is really testing the same thing: can you connect a technical fact to why it matters to the person asking?"
     }
   ]
 }
