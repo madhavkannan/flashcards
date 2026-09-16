@@ -1,0 +1,217 @@
+{
+  "id": "sierra-interview",
+  "title": "Interviewing at Sierra",
+  "color": "#3B6FA0",
+  "modules": [
+    {
+      "id": "company",
+      "label": "About Sierra",
+      "summary": "Knowing Sierra's story, product, and culture cold is table stakes before either of these interviews.",
+      "lessons": [
+        { "id": "co01", "title": "Founding story",
+          "why": "The founders' background explains a lot about how Sierra positions itself against both infra companies and legacy CX vendors.",
+          "facts": [
+            "Bret Taylor left his role as co-CEO of Salesforce in January 2023; Clay Bavor left Google around the same time after 18 years there.",
+            "The two met working together at Google years earlier and decided to start Sierra together in 2023.",
+            "Sierra emerged from stealth on February 13, 2024, disclosing a $110M raise (Fortune exclusive)."
+          ] },
+        { "id": "co02", "title": "Funding trajectory",
+          "why": "The growth curve is part of the story — worth knowing the path, not just the current number.",
+          "facts": [
+            "Valued at $1B at its February 2024 stealth launch, then $4.5B by October 2024 after raising $175M.",
+            "Reached a $10B valuation in September 2025 on a $350M raise.",
+            "Raised $950M in May 2026 at a $15.8B valuation, led by Tiger Global and Google's GV — one of the largest AI funding rounds of the year."
+          ],
+          "mustRemember": "Cite the trajectory, not just the current number — interviewers reference the growth story." },
+        { "id": "co03", "title": "What Sierra actually sells",
+          "why": "The single most important framing to get right before either interview.",
+          "facts": [
+            "Agent OS: one platform for building, deploying, and optimizing customer-facing AI agents across chat, voice, SMS, WhatsApp, email, and ChatGPT.",
+            "Sells to business/CX leaders making a platform decision, not primarily to developers integrating an API.",
+            "The pitch is a finished, branded agent for the customer's own brand — not raw infrastructure a developer builds on top of."
+          ] },
+        { "id": "co04", "title": "Notable customers",
+          "why": "The customer list itself tells you Sierra isn't chasing one vertical.",
+          "facts": [
+            "Retail/consumer: ADT, Sonos, WeightWatchers, Casper, The Gap.",
+            "Finance: Rocket Mortgage, SoFi.",
+            "Healthcare and telecom/other: Sutter Health, SoftBank."
+          ] }
+      ],
+      "takeaway": "Two ex-Big Tech operators building the operating system for customer-facing AI agents — stealth to $15.8B in under two and a half years."
+    },
+    {
+      "id": "agentos",
+      "label": "Agent OS: the Product",
+      "summary": "The specific modules and mechanics you'd actually be scoping and shipping in either role.",
+      "lessons": [
+        { "id": "os01", "title": "Agent Studio",
+          "why": "The entry point for most non-engineering configuration work.",
+          "facts": [
+            "A no-code builder for designing and configuring an agent's behavior.",
+            "Where most of the day-to-day scoping and iteration on an agent's conversational flow happens.",
+            "Built so business/CX teams can adjust agent behavior without needing an engineer for every change."
+          ] },
+        { "id": "os02", "title": "Agent SDK",
+          "why": "The escape hatch when a customer's needs go beyond what the no-code builder supports.",
+          "facts": [
+            "A developer toolkit for deeper customization than Agent Studio allows.",
+            "Used when an integration or behavior needs custom logic specific to a customer's systems.",
+            "This is where Agent Engineers spend most of their time — the boundary between Studio and SDK is a good line to know when scoping a project."
+          ] },
+        { "id": "os03", "title": "Voice",
+          "why": "Sierra's phone-agent module — directly relevant given both roles sit inside an Agent Development team shipping voice and chat agents alike.",
+          "facts": [
+            "Sierra added voice capabilities to its agents so they can handle phone calls, not just chat.",
+            "Built for natural, responsive conversation with seamless handoff to a human agent when needed.",
+            "Runs on the same underlying ASR/LLM/TTS building blocks covered in Voice AI Fundamentals — see the Landscape module here rather than re-deriving it."
+          ] },
+        { "id": "os04", "title": "Agent Data Platform (ADP)",
+          "why": "One of Sierra's newest and most strategically important modules — persistent memory is a real differentiator versus a stateless chatbot.",
+          "facts": [
+            "Launched November 2025 — gives agents persistent memory across sessions.",
+            "Gives an agent access to customer history, CRM records, real-time order status, and behavioral signals.",
+            "Unlike a stateless chatbot that starts every conversation from zero, an ADP-powered agent remembers the customer."
+          ],
+          "media": { "type": "youtube", "id": "78mPNnw8PkQ", "caption": "Sierra CEO Bret Taylor on agents that have memory" } },
+        { "id": "os05", "title": "Live Assist & Insights",
+          "why": "The two modules that make an agent deployment operable day-to-day, not just demoable.",
+          "facts": [
+            "Live Assist: a human-copilot mode where a live agent gets AI assistance mid-conversation, rather than the AI handling the call alone.",
+            "Insights 2.0: analytics for monitoring how agents are actually performing in production.",
+            "Both matter constantly in Agent Development work — this is how you and the customer know whether a shipped agent is actually working."
+          ] },
+        { "id": "os06", "title": "Trust & Reliability",
+          "why": "Matters disproportionately given Sierra's customer list includes healthcare and finance.",
+          "facts": [
+            "The security/guardrails module governing what an agent can and can't do or say.",
+            "A first-class concern for regulated-industry customers (healthcare, finance) where a wrong answer has real consequences.",
+            "Worth naming unprompted when discussing a hypothetical deployment for a regulated customer — it signals you're thinking past the demo."
+          ] }
+      ],
+      "takeaway": "The pitch in one line: reasoning, memory, channels, tooling, supervision, and analytics all live in one platform, not stitched together from point solutions."
+    },
+    {
+      "id": "roles",
+      "label": "Agent Development: the Team & Roles",
+      "summary": "Agent Development is Sierra's forward-deployed team — Strategists, PMs, and Engineers embedded with customers to actually ship agents, not just sell them.",
+      "lessons": [
+        { "id": "role01", "title": "What the Agent Development team does",
+          "why": "The team both linked roles sit on — worth understanding as a unit before the individual role breakdowns.",
+          "facts": [
+            "A forward-deployed team, embedded with a customer's engineering, CX, or operations teams depending on their needs.",
+            "Has supported hundreds of deployments — the team's whole reason to exist is the gap between a good demo and an agent that holds up across millions of real conversations.",
+            "Success is measured in customer outcomes: higher CSAT, lower churn, stronger brand, increased revenue, better margins — not in shipping features for their own sake."
+          ] },
+        { "id": "role02", "title": "Strategist, Agent Development — the role",
+          "why": "One of the two roles directly linked — worth having this cold, not paraphrased.",
+          "facts": [
+            "Partners with Agent Product Managers and Agent Engineers to scope, build, and ship agents handling thousands of conversations a day.",
+            "Combines product strategy, conversational design, and customer insight — acts as a trusted advisor driving the customer's own AI strategy.",
+            "Drives execution and delivery of multiple complex, high-visibility projects, coordinating technical and non-technical stakeholders through the full development lifecycle."
+          ] },
+        { "id": "role03", "title": "Product Manager, Agent Development (APAC) — the role",
+          "why": "The second linked role — note this specific posting is for one of Sierra's first Agent PMs on a brand-new regional team.",
+          "facts": [
+            "One of Sierra's first Agent PMs, joining the founding APAC team.",
+            "Partners directly with engineers and customers — engaging stakeholders up to executive level to discover requirements, present demos, and work through technical challenges.",
+            "Expected background: 5-7+ years in product management of highly technical products, at or above Senior PM level."
+          ] },
+        { "id": "role04", "title": "Strategist vs. PM: how the two actually differ",
+          "why": "Worth being able to articulate this distinction clearly — signals you understand the org, not just the two titles.",
+          "facts": [
+            "Strategist leans toward consulting, go-to-market, and hands-on delivery execution across a portfolio of customer projects.",
+            "PM leans toward roadmap ownership, prioritization, and scoping which features actually get built, closer to a classic senior technical PM archetype.",
+            "Neither role writes the production agent code — that's the separate Agent Engineer track; both need enough technical fluency to work with engineers, not replace them."
+          ] }
+      ],
+      "takeaway": "Both roles are \"sit with the customer and make the agent actually work,\" not \"build the platform\" — technical fluency is so you can talk to engineers, not replace them."
+    },
+    {
+      "id": "interview",
+      "label": "Interview Prep",
+      "summary": "Sierra's interviews test whether you can design, ship, and reason about a production agent under real constraints — not trivia.",
+      "lessons": [
+        { "id": "int01", "title": "Sierra's interview philosophy",
+          "why": "Sets expectations for the format you'll actually face, whichever role you're interviewing for.",
+          "facts": [
+            "Sierra publicly rebuilt even its software-engineering interview away from algorithm trivia and toward representative, working-session-style formats.",
+            "The stated goal: test initiative, ownership, judgment, system understanding, and product thinking — the things the job actually requires day to day.",
+            "Expect a case- or working-session-style interview rather than a whiteboard puzzle, in either the Strategist or PM loop."
+          ] },
+        { "id": "int02", "title": "The Agent PM interview loop",
+          "why": "The most concretely documented loop for either of the two linked roles — worth knowing the shape of it going in.",
+          "facts": [
+            "Recruiter screen (~30 min): background, motivation to join Sierra, compensation expectations.",
+            "An unusually early technical filter: design an agentic AI support system.",
+            "A take-home prioritization case, then three final-round interviews — a case presentation plus live metrics case, a stakeholder-management round (really testing product sense), and a fit deep dive."
+          ] },
+        { "id": "int03", "title": "Q: Design an AI agent for a paying enterprise customer",
+          "why": "A default prompt in the technical filter round — a strong structure matters more than any specific answer.",
+          "facts": [
+            "Lead with the business outcome (containment, CSAT, revenue) before touching architecture.",
+            "Scope a narrow, high-confidence first use case rather than trying to \"handle everything\" on day one.",
+            "Name what data and system access the agent needs, how you'd validate it before going live, and how you'd measure success after launch."
+          ] },
+        { "id": "int04", "title": "Q: Prioritize a live agent roadmap under pressure",
+          "why": "Tests judgment under a live-case format, not just a prepared framework.",
+          "facts": [
+            "Anchor priority on customer-visible outcomes (containment, escalation rate) over internal engineering elegance.",
+            "Be explicit about the tradeoff — say plainly what you're consciously choosing not to do, and why.",
+            "Be ready to defend the call to a skeptical stakeholder in the room, not just state it once."
+          ] },
+        { "id": "int05", "title": "The stakeholder-management round: what it's really testing",
+          "why": "Easy to underrate this round as \"just behavioral\" — it's actually core to the job.",
+          "facts": [
+            "Because the role is forward-deployed and embedded, this round is testing whether you can hold a room with a frustrated customer executive and a skeptical engineer at the same time.",
+            "Bring a real example of navigating genuinely conflicting stakeholder asks under a deadline, not a clean hypothetical.",
+            "Framed by interviewers as a product-sense round in disguise — they're watching how you weigh competing asks, not just whether you're personable."
+          ] }
+      ],
+      "takeaway": "Every round comes back to one test: can you turn a real, messy customer problem into a scoped agent decision you can defend under questioning?"
+    },
+    {
+      "id": "landscape",
+      "label": "Voice AI Landscape & Competitors",
+      "summary": "Sierra competes on being the full agent operating system, not raw model quality — knowing where the lines are drawn matters more than a feature checklist.",
+      "lessons": [
+        { "id": "land01", "title": "Where Sierra sits: applied platform, not infrastructure",
+          "why": "The single clearest way to distinguish Sierra from a company like Deepgram in conversation.",
+          "facts": [
+            "Sierra sells a finished, branded agent to business/CX buyers making a platform decision.",
+            "Infrastructure companies like Deepgram sell APIs/platforms to developers building their own agent on top.",
+            "See the Voice AI Fundamentals topic's Company Positioning module for the fuller Deepgram-vs-Sierra breakdown — same distinction, not repeated here."
+          ] },
+        { "id": "land02", "title": "Closest enterprise competitors: Decagon and Ada",
+          "why": "The two names most likely to come up if asked \"who competes with Sierra?\"",
+          "facts": [
+            "Current market analyses consistently name Decagon and Ada as the closest like-for-like enterprise agent platforms.",
+            "Like Sierra, both sell a finished, managed agent platform rather than raw model access.",
+            "Worth being able to name both without hesitation — not knowing your closest competitors reads poorly in either interview."
+          ] },
+        { "id": "land03", "title": "Helpdesk-native alternatives",
+          "why": "The alternative path a prospective customer takes when they'd rather not adopt a separate platform.",
+          "facts": [
+            "Intercom Fin and Zendesk's AI agents build the agent directly into a helpdesk the company already uses.",
+            "Gorgias plays a similar role specifically for Shopify-based e-commerce businesses.",
+            "This is the natural comparison when a prospective customer already has deep helpdesk lock-in."
+          ] },
+        { "id": "land04", "title": "Why companies actually switch away from Sierra",
+          "why": "A more useful thing to know than any feature comparison — shows commercial fluency, not just product knowledge.",
+          "facts": [
+            "Current market analyses point to cost and fit as the main reasons teams look elsewhere — not quality.",
+            "\"Fit\" usually means an existing helpdesk-native alternative is simply less disruptive to adopt.",
+            "Useful framing in an interview: naming this nuance signals you understand competitive dynamics, not just a feature list."
+          ] },
+        { "id": "land05", "title": "The voice AI stack underneath Sierra's Voice module",
+          "why": "Ties this topic back to the underlying technology rather than treating Sierra's product as a black box.",
+          "facts": [
+            "Sierra's Voice module runs on the same ASR / reasoning-layer / TTS building blocks covered in Voice AI Fundamentals.",
+            "The same cascaded-vs-speech-to-speech fork and latency-budget constraints apply — Sierra doesn't get a pass on physics.",
+            "See the Voice AI Fundamentals topic directly rather than duplicating that material here."
+          ] }
+      ],
+      "takeaway": "In a competitor conversation, naming the buyer difference (developer vs. business/CX buyer) lands sharper than naming a feature difference."
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 {
   "topics": [
     { "id": "dad-prep", "file": "dad-prep.json" },
-    { "id": "voice-ai", "file": "voice-ai.json" }
+    { "id": "voice-ai", "file": "voice-ai.json" },
+    { "id": "sierra-interview", "file": "sierra-interview.json" }
   ]
 }
